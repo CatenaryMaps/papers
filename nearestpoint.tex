@@ -1,7 +1,6 @@
 \documentclass[a4paper,10pt]{article}
 \usepackage[utf8]{inputenc}
-
-%opening
+\input{rust.tex}
 \title{Nearest Point-Geodesic Problem}
 \author{Joshua Wong, Kyler Chin}
 
@@ -12,8 +11,18 @@
 \begin{abstract}
 The problem states: Given a Geodesic, defined by the shortest path between two points on a sphere's surface, and a random point on the sphere's surface, find the closest point on that line to that random point.
 \end{abstract}
+
 \section{Introduction}
-We will Use the wgs84 coordinate system, and repersent the Earth as a oblate spheroid. The difficulty in this problem comes from the issue of the Earth's irregular shape.
+We will use the WGS84 coordinate system and represent the Earth as an oblate spheroid. The difficulty in this problem comes from the issue of the Earth's irregular shape.
+
+\section{Solution in Euclidean Space}
 \section{Kyler's Solution}
-Take the Geodesic's endpoints $(P_1, P_2)$, along with the random point, $R_1$, and construct a triangle, $\triangle{P_1P_2R_1}$, using Vincenty's formulae to construct the edges. Then, take the midpoint of $\overline{P_1P_2}$, and construct a new line using this new midpoint, $M_1$ and $R_1$. Throw out whichever line is longer $\overline{R_1P_1}$ or $\overline{R_1P_2}$, and replace it with $\overline{R_1M_1}$. Repeat this process until $\overline{P_1P_2}$ is within the specified tolerance. This algorithm is $O(\log_2(n))$, where $n$ is equal to the orignal length of $\overline{P_1P_2}$. It takes $log_2(n)$ steps to reach the specified tolerance.
+Take the Geodesic's endpoints $(P_1, P_2)$, along with the random point, $R_1$, and construct $\triangle{P_1P_2R_1}$, using Vincenty's formulae to construct the edges. Then, take the midpoint of $\overline{P_1P_2}$, and construct a new line using this new midpoint, $M_1$, and $R_1$. Throw out whichever line is longer $\overline{R_1P_1}$ or $\overline{R_1P_2}$, and replace it with $\overline{R_1M_1}$. Repeat this process until $\overline{P_1P_2}$ is within the specified tolerance. This algorithm is $O(\log_2(n))$, where $n$ is equal to the original length of $\overline{P_1P_2}$. It takes $\log_2(n)$ steps to reach the specified tolerance.
+
+\begin{lstlisting}[language=rust]
+fn main() {
+    println!("Hello, world!");
+}
+\end{lstlisting}
+
 \end{document}
