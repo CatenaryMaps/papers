@@ -2,8 +2,10 @@
 \usepackage{listings}
 \definecolor{GrayCodeBlock}{RGB}{241,241,241}
 \definecolor{BlackText}{RGB}{110,107,94}
-\definecolor{RedTypename}{RGB}{182,86,17}
-\definecolor{GreenString}{RGB}{96,172,57}
+\definecolor{AquaTypename}{RGB}{45, 191, 184}
+\definecolor{BrownString}{RGB}{195,105,57}
+\definecolor{AquaKeyword}{RGB}{45, 191, 184}
+\definecolor{BlueKeyword}{RGB}{54, 124, 208}
 \definecolor{PurpleKeyword}{RGB}{184,84,212}
 \definecolor{GrayComment}{RGB}{170,170,170}
 \definecolor{GoldDocumentation}{RGB}{180,165,45}
@@ -25,24 +27,29 @@
     keywords={
         true,false,
         unsafe,async,await,move,
-        use,pub,crate,super,self,mod,
-        struct,enum,fn,const,static,let,mut,ref,type,impl,dyn,trait,where,as,
+        use,super,self,mod,
+        enum,fn,const,static,let,mut,ref,type,impl,dyn,trait,where,as,
         break,continue,if,else,while,for,loop,match,return,yield,in
     },
-    keywordstyle=\color{PurpleKeyword},
+    keywordstyle=\color{AquaKeyword},
+    keywordstyle=[2]{
+        pub,struct,extern,crate
+    },
+    keywordstyle=[2]\color{BlueKeyword},
     ndkeywords={
         bool,u8,u16,u32,u64,u128,i8,i16,i32,i64,i128,char,str,
         Self,Option,Some,None,Result,Ok,Err,String,Box,Vec,Rc,Arc,Cell,RefCell,HashMap,BTreeMap,
+        FeedMessage,UserFeed,
         macro_rules
     },
-    ndkeywordstyle=\color{RedTypename},
+    ndkeywordstyle=\color{AquaTypename},
     comment=[l][\color{GrayComment}\slshape]{//},
     morecomment=[s][\color{GrayComment}\slshape]{/*}{*/},
     morecomment=[l][\color{GoldDocumentation}\slshape]{///},
     morecomment=[s][\color{GoldDocumentation}\slshape]{/*!}{*/},
     morecomment=[l][\color{GoldDocumentation}\slshape]{//!},
-    morecomment=[s][\color{RedTypename}]{\#![}{]},
-    morecomment=[s][\color{RedTypename}]{\#[}{]},
-    stringstyle=\color{GreenString},
+    morecomment=[s][\color{AquaTypename}]{\#![}{]},
+    morecomment=[s][\color{AquaTypename}]{\#[}{]},
+    stringstyle=\color{BrownString},
     string=[b]"
 }

@@ -1,0 +1,66 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+
+%opening
+\title{GTFS-RT on Websocket}
+\author{Joshua Wong}
+\input{rust.tex}
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+
+\end{abstract}
+
+\section{GTFS-RT Fields}
+There are four subfields in the GTFS-RT fields we will look at.
+\begin{itemize}
+    \item ID
+    \item TripUpdates
+    \item VehiclePositions
+    \item Alerts
+\end{itemize}
+\begin{tabbing}
+    \textbf{FeedMessage} \\
+    \quad \= \textbf{FeedHeader} \\
+    \quad \quad \= \textbf{Incrementality} \\
+    \quad \= \textbf{FeedEntity} \\
+    \quad \quad \= \textbf{TripUpdate} \\
+    \quad \quad \quad \= \textbf{TripDescriptor} \\
+    \quad \quad \quad \quad \= \textbf{ScheduleRelationship} \\
+    \quad \quad \quad \= \textbf{VehicleDescriptor} \\
+    \quad \quad \quad \quad \= \textbf{WheelchairAccessible} \\
+    \quad \quad \quad \= \textbf{StopTimeUpdate} \\
+    \quad \quad \quad \quad \= \textbf{StopTimeEvent} \\
+    \quad \quad \quad \quad \= \textbf{ScheduleRelationship} \\
+    \quad \quad \quad \quad \= \textbf{StopTimeProperties} \\
+    \quad \quad \= \textbf{TripProperties} \\
+    \quad \= \textbf{VehiclePosition} \\
+    \quad \quad \= \textbf{TripDescriptor} \\
+    \quad \quad \quad \= \textbf{ScheduleRelationship} \\
+    \quad \quad \quad \= \textbf{VehicleDescriptor} \\
+    \quad \quad \quad \quad \= \textbf{WheelchairAccessible} \\
+    \quad \quad \quad \= \textbf{Position} \\
+    \quad \quad \quad \= \textbf{VehicleStopStatus} \\
+    \quad \quad \quad \= \textbf{CongestionLevel} \\
+    \quad \quad \quad \= \textbf{OccupancyStatus} \\
+    \quad \quad \quad \= \textbf{CarriageDetails} \\
+    \quad \= \textbf{Alert} \\
+    \quad \quad \= \textbf{TimeRange} \\
+    \quad \quad \= \textbf{EntitySelector} \\
+    \quad \quad \quad \= \textbf{TripDescriptor} \\
+    \quad \quad \quad \quad \= \textbf{ScheduleRelationship} \\
+    \quad \quad \= \textbf{Cause} \\
+    \quad \quad \= \textbf{Effect} \\
+    \quad \quad \= \textbf{TranslatedString} \\
+    \quad \quad \quad \= \textbf{Translation} \\
+    \quad \quad \= \textbf{SeverityLevel} \\
+\end{tabbing}
+\begin{lstlisting}[language=rust]
+pub struct UserFeed {
+    feeds: Vec<FeedMessage>,
+}
+\end{lstlisting}
+A Vector containing feeds a user is subscribed to.
+\end{document}
